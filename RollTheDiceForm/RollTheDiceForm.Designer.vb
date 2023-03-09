@@ -57,11 +57,12 @@ Partial Class RollTheDice
         '
         'ListBox1
         '
+        Me.ListBox1.Font = New System.Drawing.Font("Consolas", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point)
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.ItemHeight = 20
-        Me.ListBox1.Location = New System.Drawing.Point(147, 22)
+        Me.ListBox1.ItemHeight = 18
+        Me.ListBox1.Location = New System.Drawing.Point(185, 98)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(507, 264)
+        Me.ListBox1.Size = New System.Drawing.Size(452, 130)
         Me.ListBox1.TabIndex = 4
         '
         'RollTheDice

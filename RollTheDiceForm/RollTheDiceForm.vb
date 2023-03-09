@@ -96,7 +96,7 @@ Public Class RollTheDice
         Loop
         ListBox1.Items.Add("Dice Rolls by Number of Times That a Roll Occurs") 'Header in list box
         For printcount = 0 To 11 Step 1
-            label = label & (Str(rollCount(printcount, 0)).PadLeft(5)) 'collum labels using string for format 
+            label = label & (Str(rollCount(printcount, 0)).PadLeft(4)) 'collum labels using string for format 
         Next
         ListBox1.Items.Add(label) 'add format string to list box
         ListBox1.Items.Add("") 'add line for space
