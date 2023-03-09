@@ -4,22 +4,27 @@ Option Strict On
 'RCET0265
 'spring 2023
 'RolltheDiceForm
+'https://github.com/bbre1666/RollTheDiceForm.git
 
 Public Class RollTheDice
     Private Sub ExitButton_Click(sender As Object, e As EventArgs) Handles ExitButton.Click
-        Me.Close()
+        Me.Close() 'close button action
 
     End Sub
 
 
 
     Private Sub RollButton_Click(sender As Object, e As EventArgs) Handles RollButton.Click
+        'dim all varables 
         Dim rollValue As Integer
         Dim rollCount(11, 1) As Integer
         Dim numberofRolls As Integer
         Dim printcount As Integer
         Dim leave As Boolean = False
         Dim temp As String
+        Dim label As String
+        Dim Value As String
+
         'setting the column labels 
         rollCount(0, 0) = 1
         rollCount(1, 0) = 2
@@ -48,18 +53,18 @@ Public Class RollTheDice
         rollCount(10, 1) = 0
         rollCount(11, 1) = 0
 
-        Do Until numberofRolls = 1000
-            Dim Dice1 As Integer
+        Do Until numberofRolls = 1000 'Rolling the "Dice"
+            Dim Dice1 As Integer 'random number gennrator for die 1
             Randomize()
             Dice1 = CInt(Int((6 * Rnd()) + 1))
 
-            Dim Dice2 As Integer
+            Dim Dice2 As Integer 'random number gennrator for die 2
             Randomize()
             Dice2 = CInt(Int((6 * Rnd()) + 1))
 
-            rollValue = (Dice1 + Dice2)
+            rollValue = (Dice1 + Dice2) 'Addong the dice rolls
 
-            If rollValue = 1 Then
+            If rollValue = 1 Then 'logging the number of roll occurances 
                 rollCount(0, 1) = rollCount(0, 1) + 1
             ElseIf rollValue = 2 Then
                 rollCount(1, 1) = rollCount(1, 1) + 1
@@ -84,27 +89,24 @@ Public Class RollTheDice
             ElseIf rollValue = 12 Then
                 rollCount(11, 1) = rollCount(11, 1) + 1
             Else
-                Console.WriteLine("oops")
+                ListBox1.Items.Add("oops") 'ceatch if there is a value not lisred above 
             End If
 
-            numberofRolls = numberofRolls + 1
+            numberofRolls = numberofRolls + 1 'adds one to the number of rools  
         Loop
-        ListBox1.Items.Add("Dice Rolls by Number of Times That a Roll Occurs")
-        Dim label As String
-        Dim Value As String
-
+        ListBox1.Items.Add("Dice Rolls by Number of Times That a Roll Occurs") 'Header in list box
         For printcount = 0 To 11 Step 1
-            label = label & (Str(rollCount(printcount, 0)).PadLeft(5))
+            label = label & (Str(rollCount(printcount, 0)).PadLeft(5)) 'collum labels using string for format 
         Next
-        ListBox1.Items.Add(label)
-        ListBox1.Items.Add("")
+        ListBox1.Items.Add(label) 'add format string to list box
+        ListBox1.Items.Add("") 'add line for space
         For printcount = 0 To 11 Step 1
-            Value = Value & (Str(rollCount(printcount, 1)).PadLeft(4))
+            Value = Value & (Str(rollCount(printcount, 1)).PadLeft(4)) 'roll values using string for fomat 
         Next
-        ListBox1.Items.Add(Value)
+        ListBox1.Items.Add(Value) 'add string to list box
     End Sub
 
     Private Sub ClearButton_Click(sender As Object, e As EventArgs) Handles ClearButton.Click
-        ListBox1.Items.Clear()
+        ListBox1.Items.Clear() 'clear button action
     End Sub
 End Class
